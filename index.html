@@ -273,11 +273,52 @@
         </div>
       </div>
     </section>
-    
-    
-    
-    
-    <section class="u-backlink u-clearfix u-grey-80"> This website was created with <a href="https://nicepage.com">Nicepage</a>
-    </section>
+
+           </section>
+<section class="u-align-center u-section-contact" id="sec-11c2">
+  <form id="contact-form" style="max-width:800px;margin:auto;background:#131622;padding:40px;border-radius:15px;">
+    <div style="display: flex; gap: 10px; margin-bottom:10px;">
+      <div style="flex: 1;">
+        <label for="your-name" style="color:#fff;">Name</label>
+        <input type="text" name="your-name" id="your-name" placeholder="Enter your Name" required class="u-border-none u-input u-input-rectangle u-radius u-input-1" style="width:100%;">
+      </div>
+      <div style="flex: 1;">
+        <label for="your-number" style="color:#fff;">Number</label>
+        <input type="text" name="your-number" id="your-number" placeholder="Enter your Number" required class="u-border-none u-input u-input-rectangle u-radius u-input-2" style="width:100%;">
+      </div>
+    </div>
+    <div style="margin-bottom:10px;">
+      <label for="your-email" style="color:#fff;">Email</label>
+      <input type="email" name="your-email" id="your-email" placeholder="Enter a valid email address" required class="u-border-none u-input u-input-rectangle u-radius u-input-3" style="width:100%;">
+    </div>
+    <div style="margin-bottom:10px;">
+      <label for="message" style="color:#fff;">Message</label>
+      <textarea name="message" id="message" placeholder="Enter your message" required class="u-border-none u-input u-input-rectangle u-radius u-input-4" style="width:100%;"></textarea>
+    </div>
+    <button type="submit" class="u-btn u-btn-submit u-button-style" style="background:#f6b8a7;color:#222;">Submit</button>
+    <div id="form-status" style="margin-top:10px; color:#fff;"></div>
+  </form>
+</section>
+
+<script>
+  // Usa el endpoint funcional del segundo código
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbyIeMeoAf3JOZRxsh0Z6UdyiCD05tS8tVnbrGHzpFKL0pir-cu8PkdYgvUIjzJPWmsJ/exec';
+  const form = document.getElementById('contact-form');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(form);
+
+    fetch(scriptURL, { method: 'POST', body: formData })
+      .then(response => {
+        document.getElementById('form-status').innerText = '¡Mensaje enviado!';
+        form.reset();
+      })
+      .catch(error => {
+        document.getElementById('form-status').innerText = 'Error al enviar. Intenta de nuevo.';
+      });
+  });
+</script>
+
   
 </body></html>
